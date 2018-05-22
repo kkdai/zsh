@@ -24,6 +24,7 @@ export LINKERGO=$GOPATH/src/bitbucket.org/linkernetworks
 export LINKERGITHUBGO=$GOPATH/src/github.com/linkernetworks
 export LINKERP=$HOME/Documents/Source_Code/Projects/linker
 export PROJECT=$HOME/Documents/Source_Code/Projects
+export AURORA=$LINKERGO/aurora
 
 #Alias
 alias kc=kubectl $argv
@@ -44,9 +45,13 @@ export TERM="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # command line 左邊想顯示的內容
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs) 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs) 
 # command line 右邊想顯示的內容
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(kubecontext) 
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -133,6 +138,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# Kuernetes autocomplete
+source <(kubectl completion zsh)
 
 #iterm2 integration
 source ~/.iterm2_shell_integration.zsh
