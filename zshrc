@@ -6,7 +6,7 @@ export ZSH=/Users/Evan/.oh-my-zsh
 
 
 # Basic config
-export PATH=$PATH:/bin:/usr/local/heroku/bin:/usr/local/bin
+export PATH=/bin:/usr/local/heroku/bin:/usr/local/bin:$PATH
 export LIBRARY_PATH=/usr/local/lib
 export GEM_HOME=$HOME/Software/ruby/bin
 
@@ -32,7 +32,7 @@ alias sourcetree=open -a SourceTree ./
 alias vi=vim $argv
 
 # zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
+# fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -105,6 +105,9 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 plugins=(
   git
   zsh-completions
+  gitfast
+  extract
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
