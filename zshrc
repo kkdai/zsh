@@ -1,43 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/Evan/.oh-my-zsh
 
 
-# Basic config
-export PATH=/bin:/usr/local/heroku/bin:/usr/local/bin:$PATH
-export LIBRARY_PATH=/usr/local/lib
-export GEM_HOME=$HOME/Software/ruby/bin
-
-# Go env
-export GOROOT=$(go env GOROOT)
-export GOBIN=$GOROOT/bin
-export GOTOOLS=$GOROOT/pkg/tool
-export GOPATH=$HOME/src/go
-export PATH=$PATH:$GOBIN:$GOPATH
-
-
-# Perosnal paths
-export KKDAI=$GOPATH/src/github.com/kkdai
-export LINKERGO=$GOPATH/src/bitbucket.org/linkernetworks
-export LINKERGITHUBGO=$GOPATH/src/github.com/linkernetworks
-export LINKERP=$HOME/Documents/Source_Code/Projects/linker
-export PROJECT=$HOME/Documents/Source_Code/Projects
-export AURORA=$LINKERGO/aurora
-
-#Alias
-alias kc=kubectl $argv
-alias sourcetree=open -a SourceTree ./
-alias vi=vim $argv
-
-# zsh-completions
-# fpath=(/usr/local/share/zsh-completions $fpath)
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
 
 export TERM="xterm-256color"
 
@@ -108,9 +79,12 @@ plugins=(
   gitfast
   extract
   z
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
+autoload -U compinit && compinit
+
 
 # User configuration
 
@@ -131,6 +105,26 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Basic config
+export PATH=/usr/local/heroku/bin:$PATH
+export LIBRARY_PATH=/usr/local/lib
+export GEM_HOME=$HOME/Software/ruby/bin
+
+# Go env
+export GOROOT=$(go env GOROOT)
+export GOBIN=$GOROOT/bin
+export GOTOOLS=$GOROOT/pkg/tool
+export GOPATH=$HOME/src/go
+export PATH=$PATH:$GOBIN:$GOPATH
+
+
+# Perosnal paths
+export KKDAI=$GOPATH/src/github.com/kkdai
+export LINKERGO=$GOPATH/src/bitbucket.org/linkernetworks
+export LINKERGITHUBGO=$GOPATH/src/github.com/linkernetworks
+export LINKERP=$HOME/Documents/Source_Code/Projects/linker
+export PROJECT=$HOME/Documents/Source_Code/Projects
+export AURORA=$LINKERGO/aurora
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -140,16 +134,25 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# Kuernetes autocomplete
-source <(kubectl completion zsh)
+alias kc=kubectl $argv
+alias sourcetree=open -a SourceTree ./
+alias vi=vim $argv
+alias cleanall="git remote update --prune && git gc --aggressive --prune=now && git branch --merged | grep -E -v 'master|rc|develop' | xargs -I{} git branch -d {}"
 
 #iterm2 integration
 source ~/.iterm2_shell_integration.zsh
 
+source $ZSH/oh-my-zsh.sh
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/Evan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Evan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/Evan/Documents/Source_Code/Projects/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Evan/Documents/Source_Code/Projects/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/Evan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Evan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/Evan/Documents/Source_Code/Projects/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Evan/Documents/Source_Code/Projects/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Kuernetes autocomplete
+source <(kubectl completion zsh)
+
+unsetopt inc_append_history
+unsetopt share_history
+setopt no_share_history
