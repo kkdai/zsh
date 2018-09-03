@@ -16,7 +16,7 @@ export TERM="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # command line 左邊想顯示的內容
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs) 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda dir vcs) 
 # command line 右邊想顯示的內容
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(kubecontext) 
 
@@ -135,7 +135,7 @@ export AURORA=$LINKERGO/aurora
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias kc=kubectl $argv
-alias sourcetree=open -a SourceTree ./
+alias sourcetree="open -a SourceTree ./"
 alias vi=vim $argv
 alias cleanall="git remote update --prune && git gc --aggressive --prune=now && git branch --merged | grep -E -v 'master|rc|develop' | xargs -I{} git branch -d {}"
 
@@ -156,3 +156,6 @@ source <(kubectl completion zsh)
 unsetopt inc_append_history
 unsetopt share_history
 setopt no_share_history
+export PATH="~/miniconda3/bin:$PATH"
+source ~/miniconda3/etc/profile.d/conda.sh
+export PATH="/usr/local/opt/node@8/bin:$PATH"
