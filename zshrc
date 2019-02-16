@@ -120,11 +120,6 @@ export PATH=$PATH:$GOBIN:$GOPATH
 
 # Perosnal paths
 export KKDAI=$GOPATH/src/github.com/kkdai
-export LINKERGO=$GOPATH/src/bitbucket.org/linkernetworks
-export LINKERGITHUBGO=$GOPATH/src/github.com/linkernetworks
-export LINKERP=$HOME/Documents/Source_Code/Projects/linker
-export PROJECT=$HOME/Documents/Source_Code/Projects
-export AURORA=$LINKERGO/aurora
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
